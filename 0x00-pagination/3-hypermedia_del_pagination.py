@@ -7,6 +7,7 @@ import csv
 import math
 from typing import List, Dict
 
+
 class Server:
     """Server class to paginate a database of popular baby names.
     """
@@ -50,14 +51,16 @@ class Server:
         data = []
         current_index = index
         for _ in range(page_size):
-            while current_index not in indexed_dataset and current_index < len(indexed_dataset):
+            while current_index not in
+            indexed_dataset and current_index < len(indexed_dataset):
                 current_index += 1
             if current_index >= len(indexed_dataset):
                 break
             data.append(indexed_dataset[current_index])
             current_index += 1
 
-        next_index = current_index if current_index < len(indexed_dataset) else None
+        next_index = current_index
+        if current_index < len(indexed_dataset) else None
 
         return {
                 'index': index,
