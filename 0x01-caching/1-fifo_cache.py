@@ -15,7 +15,6 @@ class FIFOCache(BaseCaching):
     When the cache exceeds MAX_ITEMS,
     the oldest added item is discarded.
     """
-
     def __init__(self):
         """ Initialize the class and
         call the parent constructor """
