@@ -12,8 +12,6 @@ class FIFOCache(BaseCaching):
     """
     FIFOCache is a caching system that follows
     the FIFO (First-In, First-Out) policy.
-    When the cache exceeds MAX_ITEMS,
-    the oldest added item is discarded.
     """
     def __init__(self):
         """ Initialize the class and
