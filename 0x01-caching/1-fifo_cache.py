@@ -3,6 +3,8 @@
 1-fifo_cache module
 """
 
+
+from collections import OrderedDict
 from base_caching import BaseCaching
 
 
