@@ -19,24 +19,17 @@ class LRUCache(BaseCaching):
             return
 
         # If key already exists, we need to update its position
-        if key in self.cache_data:
-            self.usage_order.remove(key)
-
-            self.cache_data[key] = item
-            self.usage_order.append(key)
-
-            if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-                lru_key = self.usage_order.pop(0)
-                del self.cache_data[lru_key]
+        if key not in self.cache_data:
+            if len(self.cache_data) + 1 > BaseCaching.MAX_ITEMS:
+                lru_key = self.usage_order.popitem(True)
                 print(f"DISCARD: {lru_key}")
+            self.cache_data[key] = item
+            self.cache_data.move_to_end(key, last=False)
+        else:
+            self.cache_data[key] = item
 
     def get(self, key):
         """ Retrieve an item from the cache """
-        if key is None or key not in self.cache_data:
-            return None
-
-        # Update usage order since this key was just accessed
-        self.usage_order.remove(key)
-        self.usage_order.append(key)
-
-        return self.cache_data[key]
+        if key is None and key in self.cache_data:
+            self.cache_data.move_to_end(key, last=False)
+        return self.cache_data.get(key, None)
