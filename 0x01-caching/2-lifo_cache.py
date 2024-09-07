@@ -8,18 +8,17 @@ from base_caching import BaseCaching
 
 
 class LIFOCache(BaseCaching):
-     """
-     LIFOCache is a caching system that follows
-     the LIFO (Last-In, First-Out) policy.
-     When the cache exceeds MAX_ITEMS,
-     the most recent added item is discarded.
-     """
-
-     def __init__(self):
-         """ Initialize the class and call
-         the parent constructor """
-         super().__init__()
-         self.last_key = None
+    """
+    LIFOCache is a caching system that follows
+    the LIFO (Last-In, First-Out) policy.
+    When the cache exceeds MAX_ITEMS,
+    the most recent added item is discarded.
+    """
+    def __init__(self):
+        """ Initialize the class and call
+        the parent constructor """
+        super().__init__()
+        self.last_key = None
 
     def put(self, key, item):
         """
